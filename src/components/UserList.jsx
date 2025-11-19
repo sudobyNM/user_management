@@ -88,78 +88,147 @@ const UserList = () => {
           </Link>
         </div>
       ) : (
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200 text-sm sm:text-base">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Email
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Phone
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Company
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
+        <>
+          {/* Mobile cards */}
+          <div className="space-y-4 sm:hidden">
+            {users.map((user) => (
+              <div
+                key={user.id}
+                className="rounded-lg border bg-white p-4 shadow-sm"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {user.name}
+                    </h3>
+                    <p className="text-sm text-gray-500">@{user.username}</p>
+                  </div>
+                  <span className="text-xs text-gray-500">
+                    ID: {user.id}
+                  </span>
+                </div>
 
-              {/* user info table */}
-              <tbody className="bg-white divide-y divide-gray-200">
-                {users.map((user) => (
-                  <tr key={user.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-left">
-                      <div className="text-sm font-medium text-gray-900">
-                        {user.name}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-left">
-                      <div className="text-sm text-gray-900">{user.email}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-left">
-                      <div className="text-sm text-gray-900">{user.phone}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-left">
-                      <div className="text-sm text-gray-900">
-                        {user.company?.name}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2 text-left">
-                      {/* view details btn */}
-                      <Link
-                        to={`/user/${user.id}`}
-                        className="text-blue-600 hover:text-blue-900"
-                      >
-                        View
-                      </Link>
-                      {/* edit details */}
-                      <Link
-                        to={`/edit/${user.id}`}
-                        className="text-green-600 hover:text-green-900"
-                      >
-                        Edit
-                      </Link>
-                      {/* delete user */}
-                      <button
-                        onClick={() => handleDelete(user.id, user.name)}
-                        className="text-red-600 hover:text-red-900"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                <dl className="mt-4 space-y-2 text-sm">
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-gray-500">Email:</dt>
+                    <dd className="text-gray-900 text-right">
+                      {user.email}
+                    </dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-gray-500">Phone:</dt>
+                    <dd className="text-gray-900 text-right">
+                      {user.phone || "—"}
+                    </dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-gray-500">Company:</dt>
+                    <dd className="text-gray-900 text-right">
+                      {user.company?.name || "—"}
+                    </dd>
+                  </div>
+                </dl>
+
+                <div className="mt-4 flex flex-col gap-2">
+                  <Link
+                    to={`/user/${user.id}`}
+                    className="w-full rounded-md bg-blue-50 px-4 py-2 text-center text-sm font-medium text-blue-700 hover:bg-blue-100"
+                  >
+                    View Details
+                  </Link>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+                    <Link
+                      to={`/edit/${user.id}`}
+                      className="w-full rounded-md bg-green-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-green-700"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(user.id, user.name)}
+                      className="w-full rounded-md bg-red-50 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-100"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
+
+          {/* Desktop table */}
+          <div className="hidden bg-white shadow-md rounded-lg overflow-hidden sm:block">
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200 text-sm sm:text-base">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Email
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Phone
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Company
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+
+                {/* user info table */}
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {users.map((user) => (
+                    <tr key={user.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-left">
+                        <div className="text-sm font-medium text-gray-900">
+                          {user.name}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-left">
+                        <div className="text-sm text-gray-900">{user.email}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-left">
+                        <div className="text-sm text-gray-900">{user.phone}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-left">
+                        <div className="text-sm text-gray-900">
+                          {user.company?.name}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2 text-left">
+                        {/* view details btn */}
+                        <Link
+                          to={`/user/${user.id}`}
+                          className="text-blue-600 hover:text-blue-900"
+                        >
+                          View
+                        </Link>
+                        {/* edit details */}
+                        <Link
+                          to={`/edit/${user.id}`}
+                          className="text-green-600 hover:text-green-900"
+                        >
+                          Edit
+                        </Link>
+                        {/* delete user */}
+                        <button
+                          onClick={() => handleDelete(user.id, user.name)}
+                          className="text-red-600 hover:text-red-900"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
