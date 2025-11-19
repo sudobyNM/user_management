@@ -102,19 +102,19 @@ const EditUser = () => {
 
   if (error && !formData.name) {
     return (
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-0">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 px-4">
           <div className="text-red-800">{error}</div>
-          <div className="mt-4 space-x-4">
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <button
               onClick={fetchUser}
-              className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+              className="w-full bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 sm:w-auto"
             >
               Try Again
             </button>
             <button
               onClick={() => navigate("/")}
-              className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
+              className="w-full bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 sm:w-auto"
             >
               Back to Users
             </button>
@@ -126,12 +126,12 @@ const EditUser = () => {
 
   // main edit form 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-900">Edit User</h2>
+    <div className="max-w-2xl mx-auto px-4 sm:px-0">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Edit User</h2>
         <button
           onClick={() => navigate("/")}
-          className="text-gray-600 hover:text-gray-900"
+          className="text-gray-600 hover:text-gray-900 text-left sm:text-right"
         >
           ← Back to Users
         </button>
@@ -145,7 +145,7 @@ const EditUser = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
               <label
                 htmlFor="name"
@@ -258,18 +258,18 @@ const EditUser = () => {
             </div>
           </div>
 
-          <div className="flex justify-end space-x-4 pt-6 border-t">
+          <div className="flex flex-col gap-3 pt-6 border-t sm:flex-row sm:justify-end sm:gap-4">
             <button
               type="button"
               onClick={() => navigate("/")}
-              className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+              className="w-full px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 sm:w-auto"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed sm:w-auto"
             >
               {loading ? "Updating..." : "Update User"}
             </button>

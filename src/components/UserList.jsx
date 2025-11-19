@@ -70,13 +70,15 @@ const UserList = () => {
   // main user list page
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold text-gray-900">All Users</h2>
-        <span className="text-gray-600">Total: {users.length} users</span>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">All Users</h2>
+        <span className="text-gray-600 text-sm sm:text-base">
+          Total: {users.length} users
+        </span>
       </div>
 
       {users.length === 0 ? (
-        <div className="text-center py-12 bg-white rounded-lg border">
+        <div className="text-center py-12 bg-white rounded-lg border px-4">
           <p className="text-gray-500 text-lg">No users found</p>
           <Link
             to="/create"
@@ -88,7 +90,7 @@ const UserList = () => {
       ) : (
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
+            <table className="min-w-full divide-y divide-gray-200 text-sm sm:text-base">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

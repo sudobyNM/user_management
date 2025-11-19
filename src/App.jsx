@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import UserList from "./components/UserList";
 import UserForm from "./components/UserForm";
 import EditUser from "./components/EditUser";
@@ -11,23 +11,23 @@ function App() {
       <div className="min-h-screen bg-gray-50">
         <header className="bg-white shadow-sm border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <h1 className="text-2xl font-bold text-gray-900">
+            <div className="flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
+              <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">
                 User Management Application
               </h1>
-              <nav className="flex space-x-4">
-                <a
-                  href="/"
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              <nav className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <Link
+                  to="/"
+                  className="w-full text-center rounded-md border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 sm:w-auto"
                 >
                   Home
-                </a>
-                <a
-                  href="/create"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
+                </Link>
+                <Link
+                  to="/create"
+                  className="w-full text-center rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 sm:w-auto"
                 >
                   Add User
-                </a>
+                </Link>
               </nav>
             </div>
           </div>

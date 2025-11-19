@@ -69,12 +69,14 @@ const UserForm = () => {
 
   // main form UI
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-900">Create New User</h2>
+    <div className="max-w-2xl mx-auto px-4 sm:px-0">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+          Create New User
+        </h2>
         <button
           onClick={() => navigate("/")}
-          className="text-gray-600 hover:text-gray-900"
+          className="text-gray-600 hover:text-gray-900 text-left sm:text-right"
         >
           ← Back to Users
         </button>
@@ -88,7 +90,7 @@ const UserForm = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
               <label
                 htmlFor="name"
@@ -202,18 +204,18 @@ const UserForm = () => {
           </div>
 
           {/* form btns */}
-          <div className="flex justify-end space-x-4 pt-6 border-t">
+          <div className="flex flex-col gap-3 pt-6 border-t sm:flex-row sm:justify-end sm:gap-4">
             <button
               type="button"
               onClick={() => navigate("/")}
-              className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+              className="w-full px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 sm:w-auto"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed sm:w-auto"
             >
               {loading ? "Creating..." : "Create User"}
             </button>
